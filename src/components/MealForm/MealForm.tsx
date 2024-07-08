@@ -3,14 +3,21 @@ import {ApiMeal, MealMutation} from '../../types';
 
 interface MealFormProps {
   onSubmit: (meal: ApiMeal) => void;
+  existingMeal?: ApiMeal;
+
 }
 
-const MealForm: React.FC<MealFormProps> = ({onSubmit}) => {
-  const [mealMutation, setMealMutation] = useState<MealMutation>({
-    receptionTime: '',
-    description: '',
-    calories: '',
-  });
+const emptyState: MealMutation = {
+  receptionTime: '',
+  description: '',
+  calories: '',
+};
+
+const MealForm: React.FC<MealFormProps> = ({onSubmit, existingMeal}) => {
+  const initialState: MealMutation = existingMeal
+    ? {...existingMeal, calories: existingMeal.calories.toString()} : emptyState;
+
+  const [mealMutation, setMealMutation] = useState<MealMutation>(initialState);
 
   const changeMeal = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const {name, value} = event.target;
