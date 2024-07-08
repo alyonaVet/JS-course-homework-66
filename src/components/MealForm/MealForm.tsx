@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import {Meal, MealMutation} from '../../types';
+import {ApiMeal, MealMutation} from '../../types';
 
 interface MealFormProps {
-  onSubmit: (meal: Meal) => void;
+  onSubmit: (meal: ApiMeal) => void;
 }
 
 const MealForm: React.FC<MealFormProps> = ({onSubmit}) => {
@@ -71,7 +71,7 @@ const MealForm: React.FC<MealFormProps> = ({onSubmit}) => {
         />
         <span className="ms-4">kcal</span>
       </div>
-      <button type="submit" className="btn btn-primary mt-4">
+      <button type="submit" className="btn bg-success text-white mt-4">
         Save
       </button>
     </form>
