@@ -1,6 +1,6 @@
 import React from 'react';
 import {Meal} from '../../types';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 interface MealCardProps {
   meal: Meal;
@@ -19,13 +19,13 @@ const MealItem: React.FC<MealCardProps> = ({meal, onEdit, onDelete}) => {
         <p className="fw-semibold">{meal.calories} kcal</p>
       </div>
       <div className="col-2">
-        <Link
+        <NavLink
           to={`meals/edit-meal/${meal.id}`}
           className="btn btn-secondary me-3 px-4"
           onClick={onEdit}
         >
           Edit
-        </Link>
+        </NavLink>
         <button
           className="btn btn-danger"
           onClick={onDelete}
