@@ -6,9 +6,10 @@ interface MealCardProps {
   meal: Meal;
   onEdit: VoidFunction;
   onDelete: VoidFunction;
+  disabled: boolean;
 }
 
-const MealItem: React.FC<MealCardProps> = ({meal, onEdit, onDelete}) => {
+const MealItem: React.FC<MealCardProps> = ({meal, onEdit, onDelete, disabled}) => {
   return (
     <div className="d-flex align-items-center mb-3 border border-success-subtle rounded-1 p-3 w-100">
       <div className="col-8">
@@ -29,6 +30,7 @@ const MealItem: React.FC<MealCardProps> = ({meal, onEdit, onDelete}) => {
         <button
           className="btn btn-danger"
           onClick={onDelete}
+          disabled={disabled}
         >
           Delete
         </button>
