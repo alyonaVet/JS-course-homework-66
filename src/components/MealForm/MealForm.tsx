@@ -4,6 +4,7 @@ import {ApiMeal, MealMutation} from '../../types';
 interface MealFormProps {
   onSubmit: (meal: ApiMeal) => void;
   existingMeal?: ApiMeal;
+  loading: boolean;
 
 }
 
@@ -13,7 +14,7 @@ const emptyState: MealMutation = {
   calories: '',
 };
 
-const MealForm: React.FC<MealFormProps> = ({onSubmit, existingMeal}) => {
+const MealForm: React.FC<MealFormProps> = ({onSubmit, existingMeal, loading}) => {
   const initialState: MealMutation = existingMeal
     ? {...existingMeal, calories: existingMeal.calories.toString()} : emptyState;
 
@@ -78,8 +79,15 @@ const MealForm: React.FC<MealFormProps> = ({onSubmit, existingMeal}) => {
         />
         <span className="ms-4">kcal</span>
       </div>
-      <button type="submit" className="btn bg-success text-white mt-4">
-        Save
+      <button type="submit" className="btn bg-success text-white mt-4" disabled={loading}>
+        {loading ? (
+          <>
+            <span className="spinner-border spinner-border-sm" aria-hidden="true"></span>
+            <span role="status">Loading...</span>
+          </>
+        ) : (
+          'Save'
+        )}
       </button>
     </form>
   );
