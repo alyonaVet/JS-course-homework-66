@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import MealForm from '../../components/MealForm/MealForm';
 import {ApiMeal} from '../../types';
 
-const NewDish = () => {
+const AddMeal = () => {
   const navigate = useNavigate();
 
   const createMeal = async (meal: ApiMeal) => {
@@ -19,4 +19,4 @@ const NewDish = () => {
   );
 };
 
-export default NewDish;
+export default AddMeal;
